@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Petcare Buddy</string>
+    <string name="hello_title">Help your best friend</string>
+    <string name="hello_welcome">Pet owners often face challenges in keeping a record of pet care activities, does it happen to you too? Welcome to PetCare Buddy, we will help you solve this problem!</string>
+    <string name="create_account">Create Account</string>
+    <string name="already_have_account">Already have an account</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="re_password">Re-password</string>
+    <string name="sign_in">Sign In</string>
+</resources>
