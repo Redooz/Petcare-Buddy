@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    tools:context=".views.PetDetails">
+
+    <ImageView
+        android:id="@+id/petImgView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/pet_image_description"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:textSize="18sp"
+        android:id="@+id/petNameTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pet's Name" />
+
+    <TextView
+        android:textSize="18sp"
+        android:id="@+id/petAgeTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Age: 0" />
+
+</LinearLayout>

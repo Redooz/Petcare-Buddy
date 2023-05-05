@@ -12,6 +12,9 @@
         android:theme="@style/Theme.PetcareBuddy"
         tools:targetApi="31">
         <activity
+            android:name=".HomeActivity"
+            android:exported="false" />
+        <activity
             android:name=".SignInActivity"
             android:exported="false" />
         <activity
