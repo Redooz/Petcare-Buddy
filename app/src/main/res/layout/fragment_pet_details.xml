@@ -4,7 +4,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    tools:context=".views.PetDetails">
+    tools:context=".views.PetDetailsFragment">
 
     <ImageView
         android:id="@+id/petImgView"
