@@ -23,4 +23,8 @@
     <string name="pet_image_description">Pet Image</string>
     <string name="emergency_button">Emergency Button</string>
     <string name="user_details">user_details</string>
+    <string name="reminders">Reminders</string>
+    <string name="title">Title</string>
+    <string name="description">Description</string>
+    <string name="create">Create</string>
 </resources>
