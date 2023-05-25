@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445167748069",
+    "project_id": "petcare-buddy-e737b",
+    "storage_bucket": "petcare-buddy-e737b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445167748069:android:a322095cdb0290607e650c",
+        "android_client_info": {
+          "package_name": "com.example.petcarebuddy"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445167748069-inoj094msg8a63227r3os50majjs2524.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ2eikKNPv5NO2VZSfGgoEzZRC3mOUSRo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445167748069-inoj094msg8a63227r3os50majjs2524.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
