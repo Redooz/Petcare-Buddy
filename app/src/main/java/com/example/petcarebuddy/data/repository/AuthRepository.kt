@@ -1,9 +1,9 @@
 package com.example.petcarebuddy.repository
 
-import com.example.petcarebuddy.network.AuthApi
+import com.example.petcarebuddy.network.AuthAPI
 
 class AuthRepository(
-    private val api: AuthApi
+    private val api: AuthAPI
 ) : BaseRepository() {
 
     suspend fun login(

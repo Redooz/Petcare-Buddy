@@ -6,11 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.lifecycle.lifecycleScope
 import com.example.petcarebuddy.databinding.FragmentLoginBinding
-import com.example.petcarebuddy.network.AuthApi
+import com.example.petcarebuddy.network.AuthAPI
 import com.example.petcarebuddy.network.Resource
 import com.example.petcarebuddy.repository.AuthRepository
 import com.example.petcarebuddy.views.base.BaseFragment
+import kotlinx.coroutines.launch
 
 class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepository>() {
 
@@ -20,9 +22,12 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             when (it) {
                 is Resource.Success -> {
-                    Toast.makeText(requireContext(), it.toString(), Toast.LENGTH_SHORT).show()
+                    lifecycleScope.launch {
+                        userPreferences.saveAuthToken(it.value.access_token)
+                    }
                 }
                 is Resource.Failure -> Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                else -> {}
             }
         })
 
@@ -42,6 +47,6 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         container: ViewGroup?
     ) = FragmentLoginBinding.inflate(inflater, container, false)
 
-    override fun getFragmentRepository() = AuthRepository(remoteDataSource.buildApi(AuthApi::class.java))
+    override fun getFragmentRepository() = AuthRepository(remoteDataSource.buildApi(AuthAPI::class.java))
 
 }
