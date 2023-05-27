@@ -1,4 +1,4 @@
-package com.example.petcarebuddy.views
+package com.example.petcarebuddy.views.auth
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
