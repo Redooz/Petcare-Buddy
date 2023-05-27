@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".views.HelloActivity">
 
     <LinearLayout
@@ -33,6 +34,7 @@
             android:layout_marginTop="12dp"
             android:gravity="center"
             android:text="@string/hello_title"
+            android:textColor="@color/black"
             android:textSize="30sp" />
 
         <TextView
@@ -42,6 +44,7 @@
             android:layout_marginTop="22dp"
             android:gravity="center"
             android:text="@string/hello_welcome"
+            android:textColor="@color/black"
             android:textSize="20sp" />
 
         <Button
