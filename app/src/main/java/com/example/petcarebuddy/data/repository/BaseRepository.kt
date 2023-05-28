@@ -1,6 +1,6 @@
-package com.example.petcarebuddy.repository
+package com.example.petcarebuddy.data.repository
 
-import com.example.petcarebuddy.network.Resource
+import com.example.petcarebuddy.data.network.Resource
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import retrofit2.HttpException

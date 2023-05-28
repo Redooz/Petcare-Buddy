@@ -6,25 +6,20 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.petcarebuddy.data.network.Resource
 import com.example.petcarebuddy.data.repository.AuthRepository
-import com.example.petcarebuddy.data.responses.LoginResponse
+import com.example.petcarebuddy.data.responses.RegisterResponse
 import kotlinx.coroutines.launch
 
-class AuthViewModel(
+class RegisterViewModel(
     private val repository: AuthRepository
 ): ViewModel() {
+    private val _registerResponse : MutableLiveData<Resource<RegisterResponse>> = MutableLiveData()
+    val registerResponse: LiveData<Resource<RegisterResponse>>
+        get() = _registerResponse
 
-    private val _loginResponse : MutableLiveData<Resource<LoginResponse>> = MutableLiveData()
-    val loginResponse: LiveData<Resource<LoginResponse>>
-        get() = _loginResponse
-
-    fun login(
+    fun register(
         email: String,
         password: String
     ) = viewModelScope.launch {
-        _loginResponse.value = repository.login(email, password)
-    }
-
-    fun saveAuthToken(token: String)  = viewModelScope.launch{
-        repository.saveAuthToken(token)
+        _registerResponse.value = repository.register(email, password)
     }
 }

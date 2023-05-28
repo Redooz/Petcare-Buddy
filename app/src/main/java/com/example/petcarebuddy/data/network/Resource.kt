@@ -1,4 +1,4 @@
-package com.example.petcarebuddy.network
+package com.example.petcarebuddy.data.network
 
 import okhttp3.ResponseBody
 

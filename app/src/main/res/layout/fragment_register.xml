@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".views.auth.LoginFragment">
+    android:background="@color/white"
+    tools:context=".views.auth.RegisterFragment">
 
     <LinearLayout
         android:id="@+id/container"
@@ -25,6 +26,7 @@
             android:layout_marginBottom="70dp"
             android:gravity="center"
             android:text="@string/sign_up"
+            android:textColor="@color/black"
 
             android:textSize="30sp" />
 
@@ -35,7 +37,8 @@
             android:autofillHints="emailAddress"
             android:hint="@string/email"
             android:inputType="textEmailAddress"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/passwordTxt"
@@ -44,7 +47,8 @@
             android:autofillHints="password"
             android:hint="@string/password"
             android:inputType="textPassword"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColorHint="@color/black" />
 
         <EditText
             android:id="@+id/rePasswordTxt"
@@ -53,7 +57,8 @@
             android:autofillHints="password"
             android:hint="@string/re_password"
             android:inputType="textPassword"
-            android:padding="12dp" />
+            android:padding="12dp"
+            android:textColorHint="@color/black" />
 
         <Button
             android:id="@+id/createAccountBtn"

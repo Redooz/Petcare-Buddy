@@ -9,8 +9,8 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewbinding.ViewBinding
 import com.example.petcarebuddy.data.UserPreferences
-import com.example.petcarebuddy.network.RemoteDataSouce
-import com.example.petcarebuddy.repository.BaseRepository
+import com.example.petcarebuddy.data.network.RemoteDataSouce
+import com.example.petcarebuddy.data.repository.BaseRepository
 
 abstract class BaseFragment<VM: ViewModel, B: ViewBinding, R: BaseRepository>: Fragment() {
     protected lateinit var userPreferences: UserPreferences

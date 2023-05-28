@@ -1,4 +1,4 @@
-package com.example.petcarebuddy.responses
+package com.example.petcarebuddy.data.responses
 
 data class LoginResponse(
     val access_token: String,

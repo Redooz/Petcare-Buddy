@@ -11,6 +11,8 @@ import com.example.petcarebuddy.data.UserPreferences
 import com.example.petcarebuddy.databinding.ActivityHelloBinding
 import com.example.petcarebuddy.databinding.ActivityHomeBinding
 import com.example.petcarebuddy.views.auth.AuthActivity
+import com.example.petcarebuddy.views.auth.RegisterActivity
+import com.example.petcarebuddy.views.home.HomeActivity
 
 class HelloActivity : AppCompatActivity() {
     private lateinit var binding: ActivityHelloBinding
@@ -22,18 +24,20 @@ class HelloActivity : AppCompatActivity() {
         val userPreferences = UserPreferences(this)
 
         userPreferences.authToken.asLiveData().observe(this, Observer {
-            Toast.makeText(this, it ?: "Token is null", Toast.LENGTH_SHORT).show()
-            startActivity(Intent(this@HelloActivity, AuthActivity::class.java))
+            if (it != null) {
+                val activity = HomeActivity::class.java
+                startNewActivity(activity)
+            }
         })
 
         binding.loginBtn.setOnClickListener {
             // Send to login fragment
-            //startActivity(Intent(this@HelloActivity, AuthActivity::class.java))
+            startNewActivity(AuthActivity::class.java)
         }
 
         binding.createAccountBtn.setOnClickListener {
             // Send to register fragment
-            //startActivity(Intent(this@HelloActivity, AuthActivity::class.java))
+            startNewActivity(RegisterActivity::class.java)
         }
     }
 
