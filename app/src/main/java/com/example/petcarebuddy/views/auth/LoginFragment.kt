@@ -1,6 +1,7 @@
 package com.example.petcarebuddy.views.auth
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,15 +26,23 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
         binding.progressBar.visible(false)
         binding.loginBtn.enable(false)
 
+        viewModel.enablePushResponse.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> {
+                    requireActivity().startNewActivity(HomeActivity::class.java)
+                }
+                is Resource.Failure -> Toast.makeText(requireContext(), "Enabling Notifications Failure", Toast.LENGTH_SHORT).show()
+            }
+        })
+
         viewModel.loginResponse.observe(viewLifecycleOwner, Observer {
             binding.progressBar.visible(false)
             when (it) {
                 is Resource.Success -> {
                     viewModel.saveAuthToken(it.value.access_token)
-                    requireActivity().startNewActivity(HomeActivity::class.java)
+                    viewModel.enablePush(it.value.user.id, "Android")
                 }
                 is Resource.Failure -> Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
-                else -> {}
             }
         })
 
