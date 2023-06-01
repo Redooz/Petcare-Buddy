@@ -3,36 +3,43 @@ package com.example.petcarebuddy.data.repository
 import android.util.Log
 import com.example.petcarebuddy.data.UserPreferences
 import com.example.petcarebuddy.data.network.AuthAPI
+import com.example.petcarebuddy.data.network.PetAPI
+import retrofit2.http.Field
+import retrofit2.http.Path
 
 class PetRepository(
-    private val api: AuthAPI,
-    private val preferences: UserPreferences
+    private val api: PetAPI,
 ) : BaseRepository() {
-
-    suspend fun login(
-        email: String,
-        password: String
+    suspend fun onePet(
+        id: Int
     ) = safeApiCall {
-        api.login(email, password)
+        api.onePet(id)
     }
 
-    suspend fun register(
-        email: String,
-        password: String
+    suspend fun createPet(
+        age: Int,
+        name: String,
+        description: String,
+        pathologies: String,
+        type: String
     ) = safeApiCall {
-        api.register(email, password)
+        api.createPet(age, name, description, pathologies, type)
     }
 
-    suspend fun saveAuthToken(token: String) {
-        preferences.saveAuthToken(token)
-    }
-
-    suspend fun enablePush(
+    suspend fun updatePet(
         id: Int,
-        deviceType: String,
-        notificationToken: String,
+        age: Int,
+        name: String,
+        description: String,
+        pathologies: String,
+        type: String
     ) = safeApiCall {
-        Log.w("ENABLE PUSH", notificationToken)
-        api.enablePush(id, deviceType, notificationToken)
+        api.updatePet(id, age, name, description, pathologies, type)
+    }
+
+    suspend fun deletePet(
+        id: Int
+    ) = safeApiCall {
+        api.deletePet(id)
     }
 }
