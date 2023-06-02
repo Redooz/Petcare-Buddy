@@ -109,20 +109,10 @@
                 android:id="@+id/remindersLogBtn"
                 android:layout_width="0dp"
                 android:layout_height="80dp"
-                android:layout_marginEnd="12dp"
                 android:layout_weight="0.5"
                 android:padding="16dp"
                 android:text="@string/reminders_log" />
 
-
-            <Button
-                android:id="@+id/tipsBtn"
-                android:layout_width="0dp"
-                android:layout_height="80dp"
-
-                android:layout_weight="0.5"
-                android:padding="16dp"
-                android:text="@string/tips" />
         </TableRow>
 
 
