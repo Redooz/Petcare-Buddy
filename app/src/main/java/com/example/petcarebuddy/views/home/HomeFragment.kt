@@ -51,10 +51,6 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, PetReposit
         binding.emergencyBtn.setOnClickListener {
             //EmergencyActivity
         }
-
-        binding.tipsBtn.setOnClickListener {
-            //TipsActivity
-        }
     }
 
     private fun addPetsToChooser(pets: GetPetsResponse) {
