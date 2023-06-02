@@ -23,6 +23,7 @@ class CreatePetFragment : BaseFragment<CreatePetViewModel, FragmentCreatePetBind
             when (it) {
                 is Resource.Success -> Toast.makeText(requireContext(), "Creating Pet Succesfully", Toast.LENGTH_SHORT).show()
                 is Resource.Failure -> Toast.makeText(requireContext(), "Creating Pet Failure", Toast.LENGTH_SHORT).show()
+                else -> {}
             }
         })
 

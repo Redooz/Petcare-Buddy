@@ -1,60 +1,62 @@
 package com.example.petcarebuddy.views.reminder
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.example.petcarebuddy.R
+import android.widget.Toast
+import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import com.example.petcarebuddy.data.network.PetAPI
+import com.example.petcarebuddy.data.network.ReminderAPI
+import com.example.petcarebuddy.data.network.Resource
+import com.example.petcarebuddy.data.repository.PetRepository
+import com.example.petcarebuddy.data.repository.ReminderRepository
+import com.example.petcarebuddy.databinding.FragmentNewReminderBinding
+import com.example.petcarebuddy.views.base.BaseFragment
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.runBlocking
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class NewReminderFragment : BaseFragment<CreateReminderViewModel, FragmentNewReminderBinding, ReminderRepository>() {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [NewReminderFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class NewReminderFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        binding.timePicker.setIs24HourView(true)
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+        viewModel.createReminderResponse.observe(viewLifecycleOwner, Observer {
+            when (it) {
+                is Resource.Success -> Toast.makeText(requireContext(), "Creating Reminder Succesfully", Toast.LENGTH_SHORT).show()
+                is Resource.Failure -> Toast.makeText(requireContext(), "Creating Reminder Failure", Toast.LENGTH_SHORT).show()
+                is Resource.Wtf -> Toast.makeText(requireContext(), "Internal Failure", Toast.LENGTH_SHORT).show()
+            }
+        })
+
+        binding.createBtn.setOnClickListener {
+            val title = binding.titleTxt.text.toString().trim()
+            val body = binding.textAreaDescriptionTxt.text.toString().trim()
+            val month = binding.datePicker.month
+            val day = binding.datePicker.dayOfMonth
+            val hour = binding.timePicker.hour
+            val minute = binding.timePicker.minute
+            val cronDate = "$minute 0$hour 0$day $month *"
+
+            println("$title, $body, $cronDate")
+
+            viewModel.createReminder(title, body, cronDate)
         }
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_new_reminder, container, false)
+    override fun getViewModel() = CreateReminderViewModel::class.java
+
+    override fun getFragmentBinding(
+        inflater: LayoutInflater,
+        container: ViewGroup?
+    ) = FragmentNewReminderBinding.inflate(inflater, container, false)
+
+    override fun getFragmentRepository(): ReminderRepository {
+        val token = runBlocking { userPreferences.authToken.first() }
+        val api = remoteDataSource.buildApi(ReminderAPI::class.java, token)
+        return ReminderRepository(api)
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment NewReminderFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            NewReminderFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
-    }
 }

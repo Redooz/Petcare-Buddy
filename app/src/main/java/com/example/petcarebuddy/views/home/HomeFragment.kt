@@ -38,6 +38,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, PetReposit
                     "Retrieving Pets Failure",
                     Toast.LENGTH_SHORT
                 ).show()
+                else -> {}
             }
         })
 

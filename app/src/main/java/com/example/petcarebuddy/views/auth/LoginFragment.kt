@@ -32,6 +32,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                     requireActivity().startNewActivity(HomeActivity::class.java)
                 }
                 is Resource.Failure -> Toast.makeText(requireContext(), "Enabling Notifications Failure", Toast.LENGTH_SHORT).show()
+                else -> {}
             }
         })
 
@@ -43,6 +44,7 @@ class LoginFragment : BaseFragment<AuthViewModel, FragmentLoginBinding, AuthRepo
                     viewModel.enablePush(it.value.user.id, "Android")
                 }
                 is Resource.Failure -> Toast.makeText(requireContext(), "Login Failure", Toast.LENGTH_SHORT).show()
+                else -> {}
             }
         })
 

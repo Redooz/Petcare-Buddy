@@ -14,7 +14,6 @@ class PetRepository(
         api.onePet(id)
     }
 
-
     suspend fun createPet(
         age: Int,
         name: String,
@@ -25,7 +24,6 @@ class PetRepository(
         api.createPet(age, name, description, pathologies, type)
     }
 
-    @FormUrlEncoded
     suspend fun updatePet(
         id: Int,
         age: Int,
