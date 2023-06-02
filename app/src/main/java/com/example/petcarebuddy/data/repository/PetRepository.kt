@@ -1,15 +1,12 @@
 package com.example.petcarebuddy.data.repository
 
-import android.util.Log
-import com.example.petcarebuddy.data.UserPreferences
-import com.example.petcarebuddy.data.network.AuthAPI
 import com.example.petcarebuddy.data.network.PetAPI
-import retrofit2.http.Field
-import retrofit2.http.Path
 
 class PetRepository(
     private val api: PetAPI,
 ) : BaseRepository() {
+
+    suspend fun allPets() = safeApiCall { api.allPets() }
     suspend fun onePet(
         id: Int
     ) = safeApiCall {
