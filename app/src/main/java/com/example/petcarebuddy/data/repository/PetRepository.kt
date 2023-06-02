@@ -1,6 +1,7 @@
 package com.example.petcarebuddy.data.repository
 
 import com.example.petcarebuddy.data.network.PetAPI
+import retrofit2.http.FormUrlEncoded
 
 class PetRepository(
     private val api: PetAPI,
@@ -13,6 +14,7 @@ class PetRepository(
         api.onePet(id)
     }
 
+
     suspend fun createPet(
         age: Int,
         name: String,
@@ -23,6 +25,7 @@ class PetRepository(
         api.createPet(age, name, description, pathologies, type)
     }
 
+    @FormUrlEncoded
     suspend fun updatePet(
         id: Int,
         age: Int,

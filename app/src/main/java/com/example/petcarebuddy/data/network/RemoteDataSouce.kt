@@ -11,27 +11,26 @@ class RemoteDataSouce {
         private const val BASE_URL = "http://localhost:3000"
     }
 
-    fun<Api> buildApi(
+    fun <Api> buildApi(
         api: Class<Api>,
         authToken: String? = null
-    ) : Api {
+    ): Api {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(
                 OkHttpClient.Builder()
-                    .addInterceptor{ chain ->
+                    .addInterceptor { chain ->
                         chain.proceed(chain.request().newBuilder().also {
                             it.addHeader("Authorization", "Bearer $authToken")
                         }.build())
 
                     }
                     .also { client ->
-                    if (BuildConfig.DEBUG) {
                         val logging = HttpLoggingInterceptor()
                         logging.setLevel(HttpLoggingInterceptor.Level.BODY)
                         client.addInterceptor(logging)
-                    }
-                }.build()
+
+                    }.build()
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build()

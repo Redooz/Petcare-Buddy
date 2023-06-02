@@ -1,23 +1,19 @@
 package com.example.petcarebuddy.views.home
 
+import android.content.Intent
 import android.os.Bundle
-import android.util.Log
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.LinearLayout
-import android.widget.TextView
 import android.widget.Toast
 import androidx.lifecycle.Observer
-import com.example.petcarebuddy.R
 import com.example.petcarebuddy.data.network.PetAPI
 import com.example.petcarebuddy.data.network.Resource
-import com.example.petcarebuddy.data.repository.AuthRepository
 import com.example.petcarebuddy.data.repository.PetRepository
 import com.example.petcarebuddy.data.responses.GetPetsResponse
 import com.example.petcarebuddy.databinding.FragmentHomeBinding
 import com.example.petcarebuddy.views.base.BaseFragment
+import com.example.petcarebuddy.views.pet.CreatePetActivity
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 
@@ -49,7 +45,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, PetReposit
         }
 
         binding.addNewPetBtn.setOnClickListener {
-            //CreatePetActivity
+            startActivity(Intent(activity, CreatePetActivity::class.java))
         }
 
         binding.emergencyBtn.setOnClickListener {
