@@ -1,4 +1,4 @@
-package com.example.petcarebuddy.views
+package com.example.petcarebuddy.views.reminder
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

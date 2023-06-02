@@ -12,6 +12,7 @@ import com.example.petcarebuddy.data.network.Resource
 import com.example.petcarebuddy.data.repository.PetRepository
 import com.example.petcarebuddy.data.responses.GetPetsResponse
 import com.example.petcarebuddy.databinding.FragmentHomeBinding
+import com.example.petcarebuddy.views.reminder.NewReminderActivity
 import com.example.petcarebuddy.views.base.BaseFragment
 import com.example.petcarebuddy.views.pet.CreatePetActivity
 import kotlinx.coroutines.flow.first
@@ -42,6 +43,7 @@ class HomeFragment : BaseFragment<HomeViewModel, FragmentHomeBinding, PetReposit
 
         binding.createReminderBtn.setOnClickListener {
             //CreateReminderActivity
+            startActivity(Intent(activity, NewReminderActivity::class.java))
         }
 
         binding.addNewPetBtn.setOnClickListener {
